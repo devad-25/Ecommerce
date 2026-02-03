@@ -18,7 +18,7 @@ interface WishlistItem {
 interface CartContextType {
   cartItems: CartItem[];
   cartCount: number;
-  addToCart: (item: Omit<CartItem, "quantity">, qty: number) => void;
+  addToCart: (item: Omit<CartItem, "quantity">, qty?: number) => void;
 
   wishlistItems: WishlistItem[];
   toggleWishlist: (item: WishlistItem) => void;
@@ -33,14 +33,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
 
-  const addToCart = (item: Omit<CartItem, "quantity">, qty: number) => {
+  // ⭐ Default qty = 1
+  const addToCart = (item: Omit<CartItem, "quantity">, qty: number = 1) => {
     setCartItems((prev) => {
       const exists = prev.find((p) => p.id === item.id);
+
       if (exists) {
         return prev.map((p) =>
           p.id === item.id ? { ...p, quantity: p.quantity + qty } : p,
         );
       }
+
       return [...prev, { ...item, quantity: qty }];
     });
   };
