@@ -64,15 +64,15 @@ const Categories: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Shop by Category
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-400">
             Explore our wide range of product categories
           </p>
         </div>
@@ -82,15 +82,15 @@ const Categories: React.FC = () => {
             {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-white border rounded-lg shadow-sm p-4 animate-pulse"
+                className="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg shadow-sm p-4 animate-pulse"
               >
-                <div className="bg-gray-200 h-32 rounded mb-4" />
-                <div className="bg-gray-200 h-4 w-2/3 rounded" />
+                <div className="bg-gray-200 dark:bg-gray-700 h-32 rounded mb-4" />
+                <div className="bg-gray-200 dark:bg-gray-700 h-4 w-2/3 rounded" />
               </div>
             ))}
           </div>
         ) : error ? (
-          <div className="text-center text-red-600 py-12">{error}</div>
+          <div className="text-center text-red-600 dark:text-red-400 py-12">{error}</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {categories.map((category) => (

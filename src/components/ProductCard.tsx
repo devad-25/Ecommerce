@@ -36,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200 group">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 hover:shadow-md transition-shadow duration-200 group">
       <div className="relative overflow-hidden rounded-t-lg">
         <img
           src={image}
@@ -52,13 +52,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
         <button
           onClick={handleToggleWishlist}
-          className={`absolute top-2 right-2 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity ${
+          className={`absolute top-2 right-2 p-2 bg-white dark:bg-gray-700 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity ${
             inWishlist ? "ring-2 ring-red-300" : ""
           }`}
         >
           <Heart
             className={`h-4 w-4 ${
-              inWishlist ? "text-red-500" : "text-gray-700"
+              inWishlist ? "text-red-500" : "text-gray-700 dark:text-gray-300"
             }`}
           />
         </button>
@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       <div className="p-4">
         <Link to={`/product/${id}`}>
-          <h3 className="font-medium text-gray-900 line-clamp-2">{name}</h3>
+          <h3 className="font-medium text-gray-900 dark:text-white line-clamp-2">{name}</h3>
         </Link>
 
         <div className="flex items-center mb-2">
@@ -76,17 +76,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
               className={`h-4 w-4 ${
                 i < Math.floor(rating)
                   ? "text-yellow-400 fill-current"
-                  : "text-gray-300"
+                  : "text-gray-300 dark:text-gray-600"
               }`}
             />
           ))}
-          <span className="ml-2 text-sm text-gray-600">({reviews})</span>
+          <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">({reviews})</span>
         </div>
 
         <div className="flex items-center justify-between mb-3">
-          <span className="text-lg font-bold">${price}</span>
+          <span className="text-lg font-bold dark:text-white">${price}</span>
           {originalPrice && (
-            <span className="text-sm line-through text-gray-500">
+            <span className="text-sm line-through text-gray-500 dark:text-gray-400">
               ${originalPrice}
             </span>
           )}

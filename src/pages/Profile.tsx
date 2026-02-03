@@ -153,7 +153,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -235,36 +235,36 @@ const Profile = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Account Sections Grid (Amazon-style) */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Account</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Your Account</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {accountSections.map((section) => (
                   <Link
                     key={section.title}
                     to={section.link}
-                    className="bg-white rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow flex items-start gap-4 group"
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-4 hover:shadow-md transition-shadow flex items-start gap-4 group"
                   >
                     <div className={`p-3 rounded-lg ${section.color}`}>
                       <section.icon className="h-6 w-6" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {section.title}
                       </h3>
-                      <p className="text-sm text-gray-600">{section.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{section.description}</p>
                     </div>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                   </Link>
                 ))}
               </div>
             </div>
 
             {/* Recent Orders */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Recent Orders</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Orders</h2>
                 <Link
                   to="/orders"
-                  className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium flex items-center gap-1"
                 >
                   View All
                   <ChevronRight className="h-4 w-4" />
@@ -275,7 +275,7 @@ const Profile = () => {
                 {recentOrders.map((order) => (
                   <div
                     key={order.id}
-                    className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     <img
                       src={order.image}
@@ -283,9 +283,9 @@ const Profile = () => {
                       className="w-16 h-16 rounded-lg object-cover"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 truncate">{order.itemName}</p>
-                      <p className="text-sm text-gray-600">{order.id}</p>
-                      <p className="text-sm text-gray-500">{order.date}</p>
+                      <p className="font-medium text-gray-900 dark:text-white truncate">{order.itemName}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{order.id}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-500">{order.date}</p>
                     </div>
                     <div className="text-right">
                       <span
@@ -295,7 +295,7 @@ const Profile = () => {
                       >
                         {getStatusText(order.status)}
                       </span>
-                      <p className="font-semibold text-gray-900 mt-1">${order.total.toFixed(2)}</p>
+                      <p className="font-semibold text-gray-900 dark:text-white mt-1">${order.total.toFixed(2)}</p>
                     </div>
                   </div>
                 ))}
@@ -303,11 +303,11 @@ const Profile = () => {
 
               {recentOrders.length === 0 && (
                 <div className="text-center py-8">
-                  <Package className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-                  <p className="text-gray-600">No orders yet</p>
+                  <Package className="h-12 w-12 text-gray-400 dark:text-gray-600 mx-auto mb-3" />
+                  <p className="text-gray-600 dark:text-gray-400">No orders yet</p>
                   <Link
                     to="/products"
-                    className="text-blue-600 hover:text-blue-700 text-sm font-medium mt-2 inline-block"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium mt-2 inline-block"
                   >
                     Start Shopping
                   </Link>
@@ -316,28 +316,28 @@ const Profile = () => {
             </div>
 
             {/* Help & Support Section */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Need Help?</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Need Help?</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <button className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
-                  <Truck className="h-8 w-8 text-blue-600" />
+                <button className="flex items-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left">
+                  <Truck className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                   <div>
-                    <p className="font-medium text-gray-900">Track Order</p>
-                    <p className="text-sm text-gray-600">Check delivery status</p>
+                    <p className="font-medium text-gray-900 dark:text-white">Track Order</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Check delivery status</p>
                   </div>
                 </button>
-                <button className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
-                  <RotateCcw className="h-8 w-8 text-orange-600" />
+                <button className="flex items-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left">
+                  <RotateCcw className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                   <div>
-                    <p className="font-medium text-gray-900">Returns</p>
-                    <p className="text-sm text-gray-600">Easy 30-day returns</p>
+                    <p className="font-medium text-gray-900 dark:text-white">Returns</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Easy 30-day returns</p>
                   </div>
                 </button>
-                <button className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
-                  <MessageSquare className="h-8 w-8 text-green-600" />
+                <button className="flex items-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left">
+                  <MessageSquare className="h-8 w-8 text-green-600 dark:text-green-400" />
                   <div>
-                    <p className="font-medium text-gray-900">Contact Us</p>
-                    <p className="text-sm text-gray-600">24/7 customer support</p>
+                    <p className="font-medium text-gray-900 dark:text-white">Contact Us</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">24/7 customer support</p>
                   </div>
                 </button>
               </div>
@@ -367,62 +367,62 @@ const Profile = () => {
             </div>
 
             {/* Coupons */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Your Coupons</h3>
-                <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Your Coupons</h3>
+                <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-bold px-2 py-1 rounded">
                   {stats.coupons} Available
                 </span>
               </div>
               <div className="space-y-3">
-                <div className="border-2 border-dashed border-blue-300 rounded-lg p-3 bg-blue-50">
+                <div className="border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-3 bg-blue-50 dark:bg-blue-900/20">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-bold text-blue-600">SAVE10</p>
-                      <p className="text-sm text-gray-600">10% off on orders above $50</p>
+                      <p className="font-bold text-blue-600 dark:text-blue-400">SAVE10</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">10% off on orders above $50</p>
                     </div>
-                    <button className="text-blue-600 text-sm font-medium hover:text-blue-700">
+                    <button className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300">
                       Copy
                     </button>
                   </div>
                 </div>
-                <div className="border-2 border-dashed border-green-300 rounded-lg p-3 bg-green-50">
+                <div className="border-2 border-dashed border-green-300 dark:border-green-600 rounded-lg p-3 bg-green-50 dark:bg-green-900/20">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-bold text-green-600">FREESHIP</p>
-                      <p className="text-sm text-gray-600">Free shipping on all orders</p>
+                      <p className="font-bold text-green-600 dark:text-green-400">FREESHIP</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Free shipping on all orders</p>
                     </div>
-                    <button className="text-green-600 text-sm font-medium hover:text-green-700">
+                    <button className="text-green-600 dark:text-green-400 text-sm font-medium hover:text-green-700 dark:hover:text-green-300">
                       Copy
                     </button>
                   </div>
                 </div>
               </div>
-              <button className="w-full mt-4 text-blue-600 text-sm font-medium hover:text-blue-700">
+              <button className="w-full mt-4 text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300">
                 View All Coupons
               </button>
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
               <div className="space-y-2">
                 <Link
                   to="/orders"
-                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
-                  <Package className="h-5 w-5 mr-3 text-gray-500" />
+                  <Package className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Your Orders</span>
                   <ChevronRight className="h-4 w-4 text-gray-400" />
                 </Link>
                 <Link
                   to="/wishlist"
-                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
-                  <Heart className="h-5 w-5 mr-3 text-gray-500" />
+                  <Heart className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Wishlist</span>
                   {wishlistItems.length > 0 && (
-                    <span className="bg-red-100 text-red-600 text-xs font-medium px-2 py-0.5 rounded-full mr-2">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium px-2 py-0.5 rounded-full mr-2">
                       {wishlistItems.length}
                     </span>
                   )}
@@ -430,19 +430,19 @@ const Profile = () => {
                 </Link>
                 <Link
                   to="/cart"
-                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
-                  <CreditCard className="h-5 w-5 mr-3 text-gray-500" />
+                  <CreditCard className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Cart</span>
                   {cartItems.length > 0 && (
-                    <span className="bg-blue-100 text-blue-600 text-xs font-medium px-2 py-0.5 rounded-full mr-2">
+                    <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium px-2 py-0.5 rounded-full mr-2">
                       {cartItems.length}
                     </span>
                   )}
                   <ChevronRight className="h-4 w-4 text-gray-400" />
                 </Link>
-                <button className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                  <Bell className="h-5 w-5 mr-3 text-gray-500" />
+                <button className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                  <Bell className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Notifications</span>
                   <span className="bg-blue-600 text-white text-xs font-medium px-2 py-0.5 rounded-full mr-2">
                     3
@@ -451,19 +451,19 @@ const Profile = () => {
                 </button>
                 <Link
                   to="/account"
-                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
-                  <Settings className="h-5 w-5 mr-3 text-gray-500" />
+                  <Settings className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Account Settings</span>
                   <ChevronRight className="h-4 w-4 text-gray-400" />
                 </Link>
-                <button className="w-full flex items-center px-3 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-                  <HelpCircle className="h-5 w-5 mr-3 text-gray-500" />
+                <button className="w-full flex items-center px-3 py-3 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                  <HelpCircle className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
                   <span className="flex-1">Help & Support</span>
                   <ChevronRight className="h-4 w-4 text-gray-400" />
                 </button>
-                <hr className="my-2" />
-                <button className="w-full flex items-center px-3 py-3 text-left text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                <hr className="my-2 dark:border-gray-700" />
+                <button className="w-full flex items-center px-3 py-3 text-left text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
                   <LogOut className="h-5 w-5 mr-3" />
                   <span className="flex-1">Sign Out</span>
                 </button>
@@ -471,8 +471,8 @@ const Profile = () => {
             </div>
 
             {/* Recently Viewed */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Recently Viewed</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Recently Viewed</h3>
               <div className="flex gap-2 overflow-x-auto pb-2">
                 {[
                   "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop",
@@ -490,7 +490,7 @@ const Profile = () => {
               </div>
               <Link
                 to="/products"
-                className="block mt-3 text-blue-600 text-sm font-medium hover:text-blue-700"
+                className="block mt-3 text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300"
               >
                 Browse More Products
               </Link>

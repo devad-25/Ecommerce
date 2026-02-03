@@ -68,22 +68,22 @@ const Orders = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Your Orders</h1>
-          <p className="text-lg text-gray-600">Track and manage your orders</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Your Orders</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400">Track and manage your orders</p>
         </div>
 
         {orders.length === 0 ? (
           <div className="text-center py-16">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl text-gray-400">📦</span>
             </div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">No orders yet</h2>
-            <p className="text-gray-600 mb-8">Start shopping to see your orders here</p>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">No orders yet</h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">Start shopping to see your orders here</p>
             <a
               href="/products"
               className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"

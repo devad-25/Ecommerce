@@ -16,11 +16,13 @@ import NotFound from "./src/pages/NotFound";
 import { CartProvider } from "./src/context/cartcontext";
 import Wishlist from "./src/pages/Wishlist";
 import Profile from "./src/pages/Profile";
+import { ThemeProvider } from "./src/context/ThemeContext";
 
 const App: React.FC = () => {
   return (
-    <Theme appearance="inherit" radius="large" scaling="100%">
-      <CartProvider>
+    <ThemeProvider>
+      <Theme appearance="inherit" radius="large" scaling="100%">
+        <CartProvider>
         <Router>
           <main className="min-h-screen font-sans">
             <Routes>
@@ -45,7 +47,8 @@ const App: React.FC = () => {
           </main>
         </Router>
       </CartProvider>
-    </Theme>
+      </Theme>
+    </ThemeProvider>
   );
 };
 

@@ -135,7 +135,7 @@ const Home: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
 
       <main>
@@ -159,48 +159,48 @@ const Home: React.FC = () => {
         </section>
 
         {/* Features */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Truck className="h-8 w-8 text-blue-600" />
+              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <Truck className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Free Shipping</h3>
-              <p className="text-gray-600">Free shipping on orders over $50</p>
+              <h3 className="text-lg font-semibold mb-2 dark:text-white">Free Shipping</h3>
+              <p className="text-gray-600 dark:text-gray-400">Free shipping on orders over $50</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Shield className="h-8 w-8 text-green-600" />
+              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <Shield className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Secure Payment</h3>
-              <p className="text-gray-600">Your payment information is safe</p>
+              <h3 className="text-lg font-semibold mb-2 dark:text-white">Secure Payment</h3>
+              <p className="text-gray-600 dark:text-gray-400">Your payment information is safe</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Headphones className="h-8 w-8 text-purple-600" />
+              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <Headphones className="h-8 w-8 text-purple-600 dark:text-purple-400" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">24/7 Support</h3>
-              <p className="text-gray-600">Get help whenever you need it</p>
+              <h3 className="text-lg font-semibold mb-2 dark:text-white">24/7 Support</h3>
+              <p className="text-gray-600 dark:text-gray-400">Get help whenever you need it</p>
             </div>
           </div>
         </section>
 
         {/* Categories */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Shop by Category
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-400">
                 Find what you're looking for
               </p>
             </div>
 
             {loadingCategories ? (
-              <p className="text-center py-10">Loading categories...</p>
+              <p className="text-center py-10 dark:text-gray-300">Loading categories...</p>
             ) : categoriesError ? (
-              <p className="text-center py-10 text-red-600">
+              <p className="text-center py-10 text-red-600 dark:text-red-400">
                 {categoriesError}
               </p>
             ) : (
@@ -214,20 +214,20 @@ const Home: React.FC = () => {
         </section>
 
         {/* Featured Products */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-1">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                   Featured Products
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-gray-600 dark:text-gray-400">
                   Handpicked items just for you
                 </p>
               </div>
               <Link
                 to="/products"
-                className="text-blue-600 hover:text-blue-700 font-medium flex items-center"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center"
               >
                 View All
                 <ArrowRight className="ml-1 h-4 w-4" />
@@ -239,12 +239,12 @@ const Home: React.FC = () => {
                 {Array.from({ length: 3 }).map((_, idx) => (
                   <div
                     key={idx}
-                    className="h-56 bg-gray-100 rounded-lg shadow-sm border p-4"
+                    className="h-56 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm border dark:border-gray-600 p-4"
                   />
                 ))}
               </div>
             ) : featuredProducts.length === 0 ? (
-              <p className="text-center py-10 text-gray-600">
+              <p className="text-center py-10 text-gray-600 dark:text-gray-400">
                 No featured products available.
               </p>
             ) : (

@@ -178,12 +178,12 @@ const Products: React.FC = () => {
   }, [page, totalPages]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">All Products</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Products</h1>
           <div className="flex items-center space-x-4">
             {/* Items per page */}
             <div className="relative">
@@ -193,7 +193,7 @@ const Products: React.FC = () => {
                   setItemsPerPage(Number(e.target.value));
                   setPage(1);
                 }}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                className="appearance-none bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm dark:text-white"
               >
                 <option value="8">8 per page</option>
                 <option value="12">12 per page</option>
@@ -206,7 +206,7 @@ const Products: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="appearance-none bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:text-white"
               >
                 <option value="featured">Featured</option>
                 <option value="price-low">Price: Low to High</option>
@@ -218,10 +218,10 @@ const Products: React.FC = () => {
             </div>
 
             {/* View Mode Toggle */}
-            <div className="flex border border-gray-300 rounded-lg">
+            <div className="flex border border-gray-300 dark:border-gray-600 rounded-lg">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 ${viewMode === "grid" ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}
+                className={`p-2 ${viewMode === "grid" ? "bg-blue-600 text-white" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"}`}
                 aria-pressed={viewMode === "grid"}
                 title="Grid view"
               >
@@ -229,7 +229,7 @@ const Products: React.FC = () => {
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 ${viewMode === "list" ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}
+                className={`p-2 ${viewMode === "list" ? "bg-blue-600 text-white" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"}`}
                 aria-pressed={viewMode === "list"}
                 title="List view"
               >
@@ -240,7 +240,7 @@ const Products: React.FC = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300"
             >
               <Filter className="h-5 w-5" />
               <span>Filters</span>
@@ -251,26 +251,26 @@ const Products: React.FC = () => {
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           {showFilters && (
-            <aside className="w-64 bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Filters</h3>
+            <aside className="w-64 bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Filters</h3>
 
               <div className="mb-6">
-                <h4 className="font-medium text-gray-900 mb-3">Category</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Category</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Filtering by category is not yet wired in this demo.
                 </p>
               </div>
 
               <div className="mb-6">
-                <h4 className="font-medium text-gray-900 mb-3">Rating</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Rating</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Use the sort menu to prioritize highest rated items.
                 </p>
               </div>
 
               <div>
-                <h4 className="font-medium text-gray-900 mb-3">Price Range</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Price Range</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Use the sort menu for price ordering or change items per page.
                 </p>
               </div>
@@ -280,9 +280,9 @@ const Products: React.FC = () => {
           {/* Products Grid */}
           <div className="flex-1">
             {searchQueryRaw && (
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
                 Showing results for{" "}
-                <span className="font-medium text-gray-900">
+                <span className="font-medium text-gray-900 dark:text-white">
                   "{decodeURIComponent(searchQueryRaw)}"
                 </span>
               </div>
@@ -294,18 +294,18 @@ const Products: React.FC = () => {
                   (_, i) => (
                     <div
                       key={i}
-                      className="bg-white rounded-lg shadow-sm border p-4 animate-fade-in"
+                      className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-4 animate-fade-in"
                     >
-                      <div className="bg-gray-100 h-40 w-full rounded mb-4" />
-                      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
-                      <div className="h-4 bg-gray-200 rounded w-1/2 mb-2" />
-                      <div className="h-8 bg-gray-200 rounded w-full mt-4" />
+                      <div className="bg-gray-100 dark:bg-gray-700 h-40 w-full rounded mb-4" />
+                      <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-2" />
+                      <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded w-1/2 mb-2" />
+                      <div className="h-8 bg-gray-200 dark:bg-gray-600 rounded w-full mt-4" />
                     </div>
                   ),
                 )}
               </div>
             ) : error ? (
-              <div className="text-center py-20 text-red-600">
+              <div className="text-center py-20 text-red-600 dark:text-red-400">
                 Failed to load products: {error}
               </div>
             ) : (
@@ -323,14 +323,14 @@ const Products: React.FC = () => {
                 </div>
 
                 {sortedProducts.length === 0 && (
-                  <div className="text-center py-20 text-gray-600">
+                  <div className="text-center py-20 text-gray-600 dark:text-gray-400">
                     No products found for your search.
                   </div>
                 )}
 
                 {/* Pagination */}
                 <div className="flex items-center justify-between mt-12">
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     Showing{" "}
                     {sortedProducts.length === 0
                       ? 0
@@ -343,7 +343,7 @@ const Products: React.FC = () => {
                     <button
                       onClick={handlePrev}
                       disabled={page === 1}
-                      className={`px-3 py-2 rounded-lg transition-colors ${page === 1 ? "text-gray-400 border border-gray-200" : "border border-gray-300 hover:bg-gray-50"}`}
+                      className={`px-3 py-2 rounded-lg transition-colors ${page === 1 ? "text-gray-400 dark:text-gray-600 border border-gray-200 dark:border-gray-700" : "border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"}`}
                     >
                       Previous
                     </button>
@@ -353,7 +353,7 @@ const Products: React.FC = () => {
                         p === "..." ? (
                           <span
                             key={`dot-${idx}`}
-                            className="px-2 text-gray-500"
+                            className="px-2 text-gray-500 dark:text-gray-400"
                           >
                             …
                           </span>
@@ -361,7 +361,7 @@ const Products: React.FC = () => {
                           <button
                             key={p}
                             onClick={() => goToPage(p as number)}
-                            className={`px-3 py-2 rounded-lg transition-colors ${p === page ? "bg-blue-600 text-white" : "border border-gray-300 hover:bg-gray-50"}`}
+                            className={`px-3 py-2 rounded-lg transition-colors ${p === page ? "bg-blue-600 text-white" : "border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"}`}
                             aria-current={p === page ? "page" : undefined}
                           >
                             {p}
@@ -373,7 +373,7 @@ const Products: React.FC = () => {
                     <button
                       onClick={handleNext}
                       disabled={page === totalPages}
-                      className={`px-3 py-2 rounded-lg transition-colors ${page === totalPages ? "text-gray-400 border border-gray-200" : "border border-gray-300 hover:bg-gray-50"}`}
+                      className={`px-3 py-2 rounded-lg transition-colors ${page === totalPages ? "text-gray-400 dark:text-gray-600 border border-gray-200 dark:border-gray-700" : "border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"}`}
                     >
                       Next
                     </button>

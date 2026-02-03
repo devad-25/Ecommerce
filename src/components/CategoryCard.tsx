@@ -12,7 +12,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ id, name, image, productCou
   return (
     <Link
       to={`/category/${id}`}
-      className="group block bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200"
+      className="group block bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 hover:shadow-md transition-shadow duration-200"
     >
       <div className="relative overflow-hidden rounded-t-lg">
         <img
@@ -22,10 +22,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ id, name, image, productCou
         />
       </div>
       <div className="p-4 text-center">
-        <h3 className="font-medium text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
+        <h3 className="font-medium text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {name}
         </h3>
-        <p className="text-sm text-gray-600">{productCount} products</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">{productCount} products</p>
       </div>
     </Link>
   );
