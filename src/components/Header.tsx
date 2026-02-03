@@ -123,9 +123,12 @@ const Header = () => {
                 </span>
               )}
             </Link>
-            <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+            <Link
+              to="/profile"
+              className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
+            >
               <User className="h-5 w-5" />
-            </button>
+            </Link>
 
             {/* Mobile menu button */}
             <button

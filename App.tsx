@@ -15,6 +15,7 @@ import Account from "./src/pages/Account";
 import NotFound from "./src/pages/NotFound";
 import { CartProvider } from "./src/context/cartcontext";
 import Wishlist from "./src/pages/Wishlist";
+import Profile from "./src/pages/Profile";
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/account" element={<Account />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
