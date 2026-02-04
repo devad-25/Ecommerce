@@ -16,6 +16,7 @@ import NotFound from "./src/pages/NotFound";
 import { CartProvider } from "./src/context/cartcontext";
 import Wishlist from "./src/pages/Wishlist";
 import Profile from "./src/pages/Profile";
+import Payment from "./src/pages/Payment";
 import { ThemeProvider } from "./src/context/ThemeContext";
 
 const App: React.FC = () => {
@@ -31,6 +32,7 @@ const App: React.FC = () => {
               <Route path="/categories" element={<Categories />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment" element={<Payment />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/profile" element={<Profile />} />
