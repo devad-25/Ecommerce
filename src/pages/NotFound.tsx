@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const NotFound: React.FC = () => {
   return (
@@ -117,7 +117,7 @@ const NotFound: React.FC = () => {
           We can&apos;t seem to find the page you are looking for!
         </p>
         <a
-          href={typeof window !== 'undefined' ? window.location.origin : '/'}
+          href={typeof window !== "undefined" ? window.location.origin : "/"}
           className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
         >
           Back to homepage
@@ -126,12 +126,12 @@ const NotFound: React.FC = () => {
         {/* Footer */}
         <div className="mt-16">
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} - Meku.dev
+            © {new Date().getFullYear()} - EcomStore
           </p>
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-[url(https://meku.dev/images/grain.png)] bg-cover bg-center opacity-60 mix-blend-soft-light z-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 to-black/40 opacity-60 mix-blend-soft-light z-20"></div>
 
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <svg
