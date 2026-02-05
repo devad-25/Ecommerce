@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./src/pages/Home";
 import Products from "./src/pages/Products";
@@ -19,12 +19,37 @@ import Profile from "./src/pages/Profile";
 import Payment from "./src/pages/Payment";
 import { ThemeProvider } from "./src/context/ThemeContext";
 
+const routeTitles: Record<string, string> = {
+  "/": "Home",
+  "/products": "Products",
+  "/categories": "Categories",
+  "/cart": "Cart",
+  "/checkout": "Checkout",
+  "/payment": "Payment",
+  "/orders": "Orders",
+  "/wishlist": "Wishlist",
+  "/profile": "Profile",
+  "/account": "My Account",
+};
+
+const TitleUpdater = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pageTitle = routeTitles[location.pathname];
+    document.title = pageTitle ? `EcomStore | ${pageTitle}` : "EcomStore";
+  }, [location.pathname]);
+
+  return null;
+};
+
 const App: React.FC = () => {
   return (
     <ThemeProvider>
       <Theme appearance="inherit" radius="large" scaling="100%">
         <CartProvider>
         <Router>
+          <TitleUpdater />
           <main className="min-h-screen font-sans">
             <Routes>
               <Route path="/" element={<Home />} />
