@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <img
           src={image}
           alt={name}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
+          className="w-full h-48 object-contain bg-white p-2 group-hover:scale-105 transition-transform duration-200"
         />
 
         {discount && (

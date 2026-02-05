@@ -60,7 +60,7 @@ const Wishlist = () => {
               <img
                 src={item.image}
                 alt={item.name}
-                className="h-48 w-full object-cover rounded-lg mb-4"
+                className="h-48 w-full object-contain bg-white p-2 rounded-lg mb-4"
               />
 
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">

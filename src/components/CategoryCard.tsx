@@ -18,7 +18,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ id, name, image, productCou
         <img
           src={image}
           alt={name}
-          className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-200"
+          className="w-full h-32 object-contain bg-white p-2 group-hover:scale-105 transition-transform duration-200"
         />
       </div>
       <div className="p-4 text-center">
