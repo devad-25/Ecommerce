@@ -27,12 +27,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
   const inWishlist = isInWishlist(id);
 
+  const product = { id, title: name, price, image };
+
   const handleAddToCart = () => {
-    addToCart({ id, name, price, image }, 1);
+    addToCart(product, 1);
   };
 
   const handleToggleWishlist = () => {
-    toggleWishlist({ id, name, price, image });
+    toggleWishlist(product);
   };
 
   return (

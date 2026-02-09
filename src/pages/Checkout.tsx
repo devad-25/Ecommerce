@@ -3,37 +3,22 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useCart } from '../context/cartcontext';
 
 const Checkout = () => {
+  const { cartItems } = useCart();
   const [shippingMethod, setShippingMethod] = useState('standard');
 
-  const cartItems = [
-    {
-      id: '1',
-      name: 'Wireless Bluetooth Headphones',
-      price: 79.99,
-      quantity: 1,
-      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop'
-    },
-    {
-      id: '2',
-      name: 'Smart Fitness Watch',
-      price: 199.99,
-      quantity: 2,
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop'
-    }
-  ];
-
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = shippingMethod === 'express' ? 15.99 : 5.99;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         <div className="flex items-center mb-8">
           <Link
             to="/cart"
@@ -170,11 +155,11 @@ const Checkout = () => {
                   <div key={item.id} className="flex items-center space-x-3">
                     <img
                       src={item.image}
-                      alt={item.name}
-                      className="w-12 h-12 object-cover rounded-lg"
+                      alt={item.title}
+                      className="w-12 h-12 object-contain bg-white rounded-lg p-1"
                     />
                     <div className="flex-1">
-                      <p className="font-medium text-gray-900 dark:text-white">{item.name}</p>
+                      <p className="font-medium text-gray-900 dark:text-white truncate max-w-[150px]">{item.title}</p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Qty: {item.quantity}</p>
                     </div>
                     <p className="font-medium text-gray-900 dark:text-white">${(item.price * item.quantity).toFixed(2)}</p>

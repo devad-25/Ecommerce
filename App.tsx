@@ -13,11 +13,14 @@ import Checkout from "./src/pages/Checkout";
 import Orders from "./src/pages/Orders";
 import Account from "./src/pages/Account";
 import NotFound from "./src/pages/NotFound";
-import { CartProvider } from "./src/context/cartcontext";
+import { CartProvider, useCart } from "./src/context/cartcontext";
+import AuthModal from "./src/components/AuthModal";
 import Wishlist from "./src/pages/Wishlist";
 import Profile from "./src/pages/Profile";
 import Payment from "./src/pages/Payment";
+import Login from "./src/pages/Login";
 import { ThemeProvider } from "./src/context/ThemeContext";
+import { AuthProvider } from "./src/context/AuthContext";
 
 const routeTitles: Record<string, string> = {
   "/": "Home",
@@ -30,6 +33,7 @@ const routeTitles: Record<string, string> = {
   "/wishlist": "Wishlist",
   "/profile": "Profile",
   "/account": "My Account",
+  "/login": "Login",
 };
 
 const TitleUpdater = () => {
@@ -43,17 +47,31 @@ const TitleUpdater = () => {
   return null;
 };
 
+const AuthModalRenderer = () => {
+  const { showAuthModal, authModalMessage, closeAuthModal } = useCart();
+  return (
+    <AuthModal
+      isOpen={showAuthModal}
+      onClose={closeAuthModal}
+      message={authModalMessage}
+    />
+  );
+};
+
 const App: React.FC = () => {
   return (
     <ThemeProvider>
       <Theme appearance="inherit" radius="large" scaling="100%">
+        <AuthProvider>
         <CartProvider>
         <Router>
           <TitleUpdater />
+          <AuthModalRenderer />
           <main className="min-h-screen font-sans">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/product/:id" element={<Products />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
@@ -62,6 +80,7 @@ const App: React.FC = () => {
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/login" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ToastContainer
@@ -74,6 +93,7 @@ const App: React.FC = () => {
           </main>
         </Router>
       </CartProvider>
+      </AuthProvider>
       </Theme>
     </ThemeProvider>
   );

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Search, ShoppingCart, User, Menu, X, Heart, Sun, Moon } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, X, Heart, Sun, Moon, LogIn } from "lucide-react";
 import { useCart } from "../context/cartcontext";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { cartCount, wishlistItems } = useCart();
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated, user: authUser } = useAuth();
   const [searchValue, setSearchValue] = useState(() => {
     try {
       const params = new URLSearchParams(location.search);
@@ -125,12 +128,28 @@ const Header = () => {
                 </span>
               )}
             </Link>
-            <Link
-              to="/profile"
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              <User className="h-5 w-5" />
-            </Link>
+            {isAuthenticated ? (
+              <Link
+                to="/profile"
+                className="flex items-center gap-2 p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                title={authUser?.phone || "Profile"}
+              >
+                <User className="h-5 w-5" />
+                {authUser?.name && (
+                  <span className="hidden lg:inline text-sm font-medium max-w-[100px] truncate">
+                    {authUser.name}
+                  </span>
+                )}
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+              >
+                <LogIn className="h-4 w-4" />
+                <span className="hidden sm:inline">Login</span>
+              </Link>
+            )}
 
             {/* Theme Toggle */}
             <button

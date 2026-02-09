@@ -6,19 +6,17 @@ import {
   Smartphone,
   Building2,
   Wallet,
-  Truck,
-  Shield,
   Check,
   ChevronDown,
   ChevronUp,
   Tag,
-  Gift,
-  Percent,
+  Shield,
   Lock,
   Clock,
   AlertCircle,
   BadgeCheck,
   Banknote,
+  Percent,
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -101,15 +99,15 @@ const Payment = () => {
   ];
 
   const emiOptions = [
-    { id: "3", months: 3, interest: 0, monthlyAmount: 0 },
-    { id: "6", months: 6, interest: 12, monthlyAmount: 0 },
-    { id: "9", months: 9, interest: 14, monthlyAmount: 0 },
-    { id: "12", months: 12, interest: 15, monthlyAmount: 0 },
+    { id: "3", months: 3, interest: 0 },
+    { id: "6", months: 6, interest: 12 },
+    { id: "9", months: 9, interest: 14 },
+    { id: "12", months: 12, interest: 15 },
   ];
 
   // Calculate totals
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0) || 479.97;
-  const shipping = subtotal > 50 ? 0 : 9.99;
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const shipping = (subtotal > 50 || subtotal === 0) ? 0 : 9.99;
   const tax = subtotal * 0.08;
   const discount = promoApplied ? subtotal * 0.1 : 0;
   const total = subtotal + shipping + tax - discount;
@@ -151,10 +149,10 @@ const Payment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {/* Header */}
         <div className="flex items-center mb-8">
           <Link
@@ -194,9 +192,7 @@ const Payment = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Payment Methods */}
           <div className="lg:col-span-2 space-y-4">
-            {/* Credit/Debit Card */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "card"
@@ -232,7 +228,6 @@ const Payment = () => {
 
               {selectedMethod === "card" && (
                 <div className="px-4 pb-4 border-t dark:border-gray-700">
-                  {/* Saved Cards */}
                   {savedCards.length > 0 && (
                     <div className="mt-4">
                       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Saved Cards</h4>
@@ -275,7 +270,6 @@ const Payment = () => {
                     </div>
                   )}
 
-                  {/* Add New Card */}
                   <div className="mt-4">
                     <label
                       className={`flex items-center p-3 border rounded-lg cursor-pointer transition-colors ${
@@ -364,7 +358,6 @@ const Payment = () => {
               )}
             </div>
 
-            {/* UPI */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "upi"
@@ -400,7 +393,6 @@ const Payment = () => {
               {selectedMethod === "upi" && (
                 <div className="px-4 pb-4 border-t dark:border-gray-700">
                   <div className="mt-4 space-y-4">
-                    {/* UPI Apps */}
                     <div className="grid grid-cols-4 gap-3">
                       {[
                         { name: "GPay", icon: "🟢" },
@@ -409,6 +401,7 @@ const Payment = () => {
                         { name: "BHIM", icon: "🟠" },
                       ].map((app) => (
                         <button
+                          type="button"
                           key={app.name}
                           className="flex flex-col items-center p-3 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                         >
@@ -417,7 +410,6 @@ const Payment = () => {
                         </button>
                       ))}
                     </div>
-
                     <div className="relative">
                       <div className="absolute inset-0 flex items-center">
                         <div className="w-full border-t border-gray-200 dark:border-gray-600"></div>
@@ -426,7 +418,6 @@ const Payment = () => {
                         <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">or enter UPI ID</span>
                       </div>
                     </div>
-
                     <div>
                       <input
                         type="text"
@@ -444,7 +435,6 @@ const Payment = () => {
               )}
             </div>
 
-            {/* Net Banking */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "netbanking"
@@ -521,7 +511,6 @@ const Payment = () => {
               )}
             </div>
 
-            {/* Wallet */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "wallet"
@@ -589,7 +578,6 @@ const Payment = () => {
               )}
             </div>
 
-            {/* EMI */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "emi"
@@ -669,7 +657,6 @@ const Payment = () => {
               )}
             </div>
 
-            {/* Cash on Delivery */}
             <div
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 transition-colors ${
                 selectedMethod === "cod"
@@ -713,13 +700,28 @@ const Payment = () => {
             </div>
           </div>
 
-          {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 p-6 sticky top-8">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Order Summary</h2>
 
-              {/* Price Breakdown */}
-              <div className="space-y-3 mb-6">
+              <div className="space-y-4 mb-6 max-h-60 overflow-y-auto pr-2">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="flex items-center space-x-3">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-12 h-12 object-contain bg-white rounded-lg p-1"
+                    />
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-900 dark:text-white truncate max-w-[150px]">{item.title}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Qty: {item.quantity}</p>
+                    </div>
+                    <p className="font-medium text-gray-900 dark:text-white">${(item.price * item.quantity).toFixed(2)}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-3 mb-6 border-t dark:border-gray-700 pt-4">
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
                   <span className="font-medium text-gray-900 dark:text-white">${subtotal.toFixed(2)}</span>
@@ -763,7 +765,6 @@ const Payment = () => {
                 </div>
               </div>
 
-              {/* Promo Code */}
               <div className="mb-6">
                 {!showPromoInput ? (
                   <button
@@ -796,73 +797,20 @@ const Payment = () => {
                         {promoApplied ? "Applied" : "Apply"}
                       </button>
                     </div>
-                    {promoApplied && (
-                      <p className="text-xs text-green-600 dark:text-green-400 flex items-center">
-                        <Check className="h-3 w-3 mr-1" />
-                        SAVE10 applied - 10% off!
-                      </p>
-                    )}
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Try: SAVE10 for 10% off
-                    </p>
                   </div>
                 )}
               </div>
 
-              {/* Gift Card */}
-              <div className="mb-6 p-3 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <Gift className="h-5 w-5 text-purple-600 dark:text-purple-400 mr-2" />
-                    <span className="text-sm font-medium text-purple-800 dark:text-purple-200">Gift Card Balance</span>
-                  </div>
-                  <span className="text-sm font-bold text-purple-600 dark:text-purple-400">$25.00</span>
-                </div>
-                <button className="mt-2 text-xs text-purple-600 dark:text-purple-400 hover:underline">
-                  Apply gift card balance
-                </button>
-              </div>
-
-              {/* Delivery Info */}
-              <div className="mb-6 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="flex items-start">
-                  <Truck className="h-5 w-5 text-gray-600 dark:text-gray-400 mr-2 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">Delivering to:</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      John Doe<br />
-                      123 Main Street, Apt 4B<br />
-                      New York, NY 10001
-                    </p>
-                    <button className="mt-1 text-xs text-blue-600 dark:text-blue-400 hover:underline">
-                      Change address
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Estimated Delivery */}
-              <div className="mb-6 flex items-center text-sm text-gray-600 dark:text-gray-400">
-                <Clock className="h-4 w-4 mr-2" />
-                <span>Estimated delivery: Feb 8 - Feb 12</span>
-              </div>
-
-              {/* Pay Button */}
               <button
                 onClick={handlePayment}
-                disabled={isProcessing}
-                className={`w-full py-4 px-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center ${
-                  isProcessing
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-orange-500 hover:bg-orange-600 text-white"
+                disabled={isProcessing || cartItems.length === 0}
+                className={`w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center ${
+                  (isProcessing || cartItems.length === 0) ? "opacity-75 cursor-not-allowed" : ""
                 }`}
               >
                 {isProcessing ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
+                    <Clock className="animate-spin h-5 w-5 mr-2" />
                     Processing...
                   </>
                 ) : (
@@ -873,19 +821,9 @@ const Payment = () => {
                 )}
               </button>
 
-              {/* Security Badge */}
               <div className="mt-4 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
-                <Shield className="h-4 w-4 mr-2 text-green-500" />
-                <span>100% Secure Payment</span>
-              </div>
-
-              {/* Payment Icons */}
-              <div className="mt-4 flex items-center justify-center space-x-3 text-gray-400">
-                <span className="text-xs">We Accept:</span>
-                <span className="text-lg">💳</span>
-                <span className="text-lg">📱</span>
-                <span className="text-lg">🏦</span>
-                <span className="text-lg">💰</span>
+                <Shield className="h-4 w-4 mr-2" />
+                <span>Secure 256-bit SSL Encryption</span>
               </div>
             </div>
           </div>
